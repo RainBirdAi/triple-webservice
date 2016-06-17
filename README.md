@@ -7,6 +7,6 @@ Start as follows:
 The server will start on port 8888.
 
 You can now:
- - Find the weather for London [http://localhost:8888/demokey/query/london/weather]
- - Find the location of Paris [http://localhost:8888/demokey/query/paris/geocode]
+ - Find the weather for London - <a href="http://localhost:8888/demokey/query/london/weather">http://localhost:8888/demokey/query/london/weather</a>
+ - Find the location of Paris - <a href="http://localhost:8888/demokey/query/paris/geocode">http://localhost:8888/demokey/query/paris/geocode</a>
  
