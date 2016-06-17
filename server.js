@@ -15,9 +15,11 @@ function processQuery(apiKey, subject, relationship, req, res) {
 
     router.querySubjectRelationship(apiKey, subject, relationship, function(err, data) {
         if (err) {
+            console.log('res-error ' + err.message);
             res.status(400).send({'status': 'ERROR',
                 'message':  err.message });
         } else {
+            console.log('res-success ' + subject + ' - ' + relationship);
             res.status(200).send({ 'status': 'OK',
                 'data':   data });
         }
