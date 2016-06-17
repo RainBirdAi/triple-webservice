@@ -1,11 +1,12 @@
 {
-  "name": "triple-webservice",
-  "version": "0.0.1",
+  "name":     "triple-webservice",
+  "version":  "0.0.1",
+  "homepage": "https://github.com/Holdy/triple-webservice",
   "engines": {
     "node": "0.10.30"
   },
   "dependencies": {
-    "express": "4.13.x",
+    "express":     "4.13.x",
     "body-parser": "1.15.x"
   }
 }
