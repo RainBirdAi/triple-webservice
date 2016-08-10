@@ -41,8 +41,29 @@ function processReframe(subject, relationship, object, res) {
     });
 }
 
+function senddata(res, data) {
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({'status': 'OK', 'data': data}, null, 3));
+}
+
 app.get('/query/:key/:subject/:relationship', function(req, res) {
     processQuery(req.params.key, req.params.subject, req.params.relationship, req, res);
+});
+
+var rdf = require('corefoo-rdf');
+app.get('/static/namequery/:subject/:relationship', function(req, res) {
+    rdf.processLabelQuery(req.params.subject, req.params.relationship, function(err, data) {
+
+        if (err) {
+            console.log('res-error   - ' + err.message);
+            res.status(400).send({'status': 'ERROR',
+                'message':  err.message });
+        } else {
+            console.log('res-success - ' + req.params.subject + ' - ' + req.params.relationship);
+            senddata(res,data);
+        }
+    });
 });
 
 app.get('/:key/query/:subject/:relationship', function(req, res) {
