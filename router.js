@@ -4,7 +4,7 @@ module.exports.addQuerySubjectRelationshipHandler = addQuerySubjectRelationshipH
 var querySubjectRelationshipHandlers = {};
 var weather = require('./handlers/weather');
 require('./handlers/geo');
-
+require('./handlers/attractions');
 
 function querySubjectRelationship (apiKey, subject, relationship, callback) {
     var demokey = apiKey && apiKey.toLowerCase() === 'demokey';
