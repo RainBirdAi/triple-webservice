@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var app = express();
 
-var reframe = require('reframe');
+var reframe = require('triple-reframe');
 
 var router = require('./router');
 

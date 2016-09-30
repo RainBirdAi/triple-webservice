@@ -15,7 +15,7 @@
     "express":     "4.13.x",
     "pluralize": "^3.0.0",
     "body-parser": "1.15.x",
-    "reframe": "0.0.x",
+    "triple-reframe": "0.0.x",
     "corefoo-rdf": "0.1.x"
   }
 }
