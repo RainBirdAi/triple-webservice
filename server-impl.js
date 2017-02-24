@@ -13,9 +13,9 @@ var server = http.createServer(app);
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(bodyParser.json());
 
-function processQuery(apiKey, subject, relationship, req, res) {
+function processQuery(apiKey, subject, relationship, params, req, res) {
 
-    router.querySubjectRelationship(apiKey, subject, relationship, function(err, data) {
+    router.querySubjectRelationship(apiKey, subject, relationship, params, function(err, data) {
         if (err) {
             console.log('res-error   - ' + err.message);
             res.status(400).send({'status': 'ERROR',
@@ -67,7 +67,7 @@ app.get('/static/namequery/:subject/:relationship', function(req, res) {
 });
 
 app.get('/:key/query/:subject/:relationship', function(req, res) {
-    processQuery(req.params.key, req.params.subject, req.params.relationship, req, res);
+    processQuery(req.params.key, req.params.subject, req.params.relationship, req.query, req, res);
 });
 
 
