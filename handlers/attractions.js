@@ -22,7 +22,7 @@ var demoAttractions = {
     ]
 };
 
-function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, callback) {
+function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, params, callback) {
 
     if (isDemoKey) {
         var data = demoAttractions[subject.toLowerCase()];

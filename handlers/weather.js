@@ -9,7 +9,7 @@ var demoOptions = [
 
 var maxOptionIndex = demoOptions.length - 1;
 
-function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, callback) {
+function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, params, callback) {
 
     if (isDemoKey) {
         callback(null, demoOptions[convert.toNumber(subject, maxOptionIndex)]);

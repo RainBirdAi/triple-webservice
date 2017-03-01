@@ -5,13 +5,15 @@ var querySubjectRelationshipHandlers = {};
 var weather = require('./handlers/weather');
 require('./handlers/geo');
 require('./handlers/attractions');
+require('./handlers/mirror');
+require('./handlers/traveltime');
 
-function querySubjectRelationship (apiKey, subject, relationship, callback) {
+function querySubjectRelationship (apiKey, subject, relationship, params, callback) {
     var demokey = apiKey && apiKey.toLowerCase() === 'demokey';
     var handler = querySubjectRelationshipHandlers[relationship];
 
     if (handler) {
-        handler(demokey, apiKey, subject, relationship, function(err, data) {
+        handler(demokey, apiKey, subject, relationship, params, function(err, data) {
             callback(err, data);
         });
     } else {
