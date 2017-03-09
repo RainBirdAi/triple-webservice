@@ -12,7 +12,7 @@ var map = {
 };
 var defaultData = makePlace('Default Place', 1, 2);
 
-function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, params, callback) {
+function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, data, callback) {
 
     if (isDemoKey) {
         var data = map[subject.toLowerCase()];

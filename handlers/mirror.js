@@ -2,16 +2,16 @@ var router  = require('../router');
 
 var demoOptions = {};
 
-function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, params, callback) {
+function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, data, callback) {
 
     // This handler will send back the query params from the request.
     // i.e. req = /blah?hello=goodbye
     // res = {'hello','goodbye'}
 
-    var keys = Object.keys(params);
+    var keys = Object.keys(data.query);
 
     keys.forEach(function(key) {
-        demoOptions[key] = params[key];
+        demoOptions[key] = data.query[key];
     });
 
     if (isDemoKey) {

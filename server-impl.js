@@ -13,9 +13,9 @@ var server = http.createServer(app);
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(bodyParser.json());
 
-function processQuery(apiKey, subject, relationship, params, req, res) {
+function processQuery(apiKey, subject, relationship, data, req, res) {
 
-    router.querySubjectRelationship(apiKey, subject, relationship, params, function(err, data) {
+    router.querySubjectRelationship(apiKey, subject, relationship, data, function(err, result) {
         if (err) {
             console.log('res-error   - ' + err.message);
             res.status(400).send({'status': 'ERROR',
@@ -23,7 +23,7 @@ function processQuery(apiKey, subject, relationship, params, req, res) {
         } else {
             console.log('res-success - ' + subject + ' - ' + relationship);
             res.status(200).send({ 'status': 'OK',
-                'data':   data });
+                'data':   result });
         }
     });
 }
@@ -67,9 +67,24 @@ app.get('/static/namequery/:subject/:relationship', function(req, res) {
 });
 
 app.get('/:key/query/:subject/:relationship', function(req, res) {
-    processQuery(req.params.key, req.params.subject, req.params.relationship, req.query, req, res);
+
+    var data = {
+        'query': req.query,
+        'body': {}
+    };
+
+    processQuery(req.params.key, req.params.subject, req.params.relationship, data, req, res);
 });
 
+app.post('/:key/query/:subject/:relationship', function(req, res) {
+
+    var data = {
+        'query': req.query,
+        'body': req.body
+    };
+
+    processQuery(req.params.key, req.params.subject, req.params.relationship, data, req, res);
+});
 
 app.get('/reframe/:subject/:relationship/:object', function(req, res) {
 
