@@ -1,10 +1,10 @@
 var router  = require('../router');
 
-function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, params, callback) {
+function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, data, callback) {
 
     var traveltime;
 
-    switch (params['mode']) {
+    switch (data.query['mode']) {
         case 'driving':
             traveltime = 60;
             break;
@@ -13,6 +13,10 @@ function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, para
             break;
         default:
             traveltime = 6000;
+    }
+
+    if (typeof data.body['multiplier'] == 'number' && data.body['multiplier'] > 0) {
+        traveltime = traveltime * data.body['multiplier']
     }
 
     if (isDemoKey) {

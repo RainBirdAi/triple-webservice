@@ -8,13 +8,13 @@ require('./handlers/attractions');
 require('./handlers/mirror');
 require('./handlers/traveltime');
 
-function querySubjectRelationship (apiKey, subject, relationship, params, callback) {
+function querySubjectRelationship (apiKey, subject, relationship, data, callback) {
     var demokey = apiKey && apiKey.toLowerCase() === 'demokey';
     var handler = querySubjectRelationshipHandlers[relationship];
 
     if (handler) {
-        handler(demokey, apiKey, subject, relationship, params, function(err, data) {
-            callback(err, data);
+        handler(demokey, apiKey, subject, relationship, data, function(err, result) {
+            callback(err, result);
         });
     } else {
         callback(new Error('Relationship \'' + relationship + '\' has no handlers.'), null);
