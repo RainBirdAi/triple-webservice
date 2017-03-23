@@ -86,6 +86,9 @@ app.post('/:key/query/:subject/:relationship', function(req, res) {
     processQuery(req.params.key, req.params.subject, req.params.relationship, data, req, res);
 });
 
+app.post('/rbproxy',  require('./handlers/rbproxy').process);
+
+
 app.get('/reframe/:subject/:relationship/:object', function(req, res) {
 
     processReframe(req.params.subject, req.params.relationship, req.params.object, res);

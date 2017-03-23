@@ -1,6 +1,6 @@
 {
   "name":     "triple-webservice",
-  "version":  "0.0.8",
+  "version":  "0.0.9",
   "main": "./lib.js",
   "homepage": "https://github.com/Holdy/triple-webservice",
   "repository": {
@@ -16,6 +16,7 @@
     "pluralize": "^3.0.0",
     "body-parser": "1.15.x",
     "triple-reframe": "0.0.x",
-    "corefoo-rdf": "0.1.x"
+    "corefoo-rdf": "0.1.x",
+    "yolapi": "0.3.x"
   }
 }
