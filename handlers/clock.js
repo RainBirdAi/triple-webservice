@@ -10,7 +10,6 @@ function querySubjectRelationship(isDemoKey, apiKey, subject, relationship, para
 
         var time = moment().tz(subject);
 
-
         var result = {
             'datetime': time.format(),
             'date': time.format('DD-MM-YYYY'),
