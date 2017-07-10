@@ -76,6 +76,21 @@ app.get('/:key/query/:subject/:relationship', function(req, res) {
     processQuery(req.params.key, req.params.subject, req.params.relationship, data, req, res);
 });
 
+// Specific endpoint for the clock
+// The timezone is in the format Europe/London
+// Therefore has a part A and part B.
+app.get('/:key/query/:subjectPartA/:subjectPartB/clock', function(req, res) {
+
+    var data = {
+        'query': req.query,
+        'body': {}
+    };
+
+    var subject = req.params.subjectPartA + '/' + req.params.subjectPartB;
+
+    processQuery(req.params.key, subject, 'clock', data, req, res);
+});
+
 app.get('/:key/securequery/:subject/:relationship', function(req, res) {
 
     var authorization = req.header('Authorization');
