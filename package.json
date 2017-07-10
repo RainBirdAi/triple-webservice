@@ -1,6 +1,6 @@
 {
-  "name":     "triple-webservice",
-  "version":  "0.0.10",
+  "name": "triple-webservice",
+  "version": "0.0.11",
   "main": "./lib.js",
   "homepage": "https://github.com/Holdy/triple-webservice",
   "repository": {
@@ -8,15 +8,16 @@
     "url": "https://github.com/Holdy/triple-webservice.git"
   },
   "author": "holdy",
-  "engines":  {
+  "engines": {
     "node": "0.10.30"
   },
   "dependencies": {
-    "express":     "4.13.x",
-    "pluralize": "^3.0.0",
     "body-parser": "1.15.x",
-    "triple-reframe": "0.0.x",
     "corefoo-rdf": "0.1.x",
+    "express": "4.13.x",
+    "moment-timezone": "0.5.x",
+    "pluralize": "^3.0.0",
+    "triple-reframe": "0.0.x",
     "yolapi": "0.3.x"
   }
 }
