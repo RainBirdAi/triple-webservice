@@ -8,6 +8,7 @@ require('./handlers/attractions');
 require('./handlers/mirror');
 require('./handlers/traveltime');
 require('./handlers/clock');
+require('./handlers/shops');
 
 function querySubjectRelationship (apiKey, subject, relationship, data, callback) {
     var demokey = apiKey && apiKey.toLowerCase() === 'demokey';
