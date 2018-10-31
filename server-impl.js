@@ -107,6 +107,22 @@ app.get('/:key/securequery/:subject/:relationship', function(req, res) {
     }
 });
 
+app.post('/:key/securequery/:subject/:relationship', function(req, res) {
+
+    var authorization = req.header('Authorization');
+
+    if ((typeof authorization == 'undefined')) {
+        res.status(401).send({'status': 'ERROR', 'message': 'Missing Authorization header!'});
+    } else {
+        var data = {
+            'query': req.query,
+            'body': req.body
+        };
+
+        processQuery(req.params.key, req.params.subject, req.params.relationship, data, req, res);
+    }
+});
+
 app.post('/:key/query/:subject/:relationship', function(req, res) {
 
     var data = {
