@@ -1,3 +1,5 @@
+env.RELEASE_VERSION = '1.0'
+
 node {
     stage 'Pull from Git'
     git branch: 'release', credentialsId: '4ae664cd-c65c-414e-8a26-b55da03d0520', url: 'git@github.com:RainBirdAi/triple-webservice.git'

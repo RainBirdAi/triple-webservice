@@ -26,11 +26,6 @@
                     "awslogs-stream-prefix": "ecs"
                 }
             },
-            "dockerLabels": {
-                "com.datadoghq.ad.instances": "[{\"host\": \"%%host%%\", \"port\": 3100}]",
-                "com.datadoghq.ad.check_names": "[\"yolanda\"]",
-                "com.datadoghq.ad.init_configs": "[{}]"
-            },
             "environment": [
                 {
                     "name": "NODE_ENV",
