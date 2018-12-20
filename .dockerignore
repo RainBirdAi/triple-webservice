@@ -1,0 +1,10 @@
+examples
+test
+tools
+npm-debug.log
+.dockerignore
+Dockerfile
+Jenkinsfile
+taskdef.json
+.gitignore
+README.md

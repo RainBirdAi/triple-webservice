@@ -1,0 +1,46 @@
+{
+    "family": "triple-webservice",
+    "cpu": "256",
+    "memory": "512",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+       "FARGATE"
+    ],
+    "executionRoleArn": "arn:aws:iam::666909753182:role/PentestECSTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "image": "%REPOSITORY_URI%:%RELEASE_VERSION%.%BUILD_NUMBER%",
+            "name": "triple-webservice",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 8888,
+                    "hostPort": 8888
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "Test-Triple-Webservice-Container-Fargate",
+                    "awslogs-region": "eu-west-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "dockerLabels": {
+                "com.datadoghq.ad.instances": "[{\"host\": \"%%host%%\", \"port\": 3100}]",
+                "com.datadoghq.ad.check_names": "[\"yolanda\"]",
+                "com.datadoghq.ad.init_configs": "[{}]"
+            },
+            "environment": [
+                {
+                    "name": "NODE_ENV",
+                    "value": "production"
+                },
+                {
+                    "name": "RB_ENVIRONMENT",
+                    "value": "test"
+                }
+            ]
+        }
+    ]
+}
