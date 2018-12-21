@@ -24,10 +24,10 @@ node {
     FAMILY=`sed -n \'s/.*"family": "\\(.*\\)",/\\1/p\' taskdef.json`
     NAME=triple-webservice
     SERVICE_NAME=${NAME}-service
-    SECURITY_GROUP=sg-edc4f485
+    SECURITY_GROUP=sg-0e9987d8900c5c171
     PRIVATE_SUBNET1=subnet-57c3f92c
     PRIVATE_SUBNET2=subnet-43ce840e
-    TARGET_GROUP_ARN=arn:aws:elasticloadbalancing:eu-west-2:666909753182:targetgroup/TestTripleWebservice/f9acb43e2a97752c
+    TARGET_GROUP_ARN=arn:aws:elasticloadbalancing:eu-west-2:666909753182:targetgroup/TestTripleWebservice/dadfe9baa88bf323
 
     #Store the repositoryUri as a variable
     REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${REGION} | jq .repositories[].repositoryUri | tr -d \'"\'`

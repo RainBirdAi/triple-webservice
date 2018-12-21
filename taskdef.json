@@ -30,10 +30,6 @@
                 {
                     "name": "NODE_ENV",
                     "value": "production"
-                },
-                {
-                    "name": "RB_ENVIRONMENT",
-                    "value": "test"
                 }
             ]
         }
