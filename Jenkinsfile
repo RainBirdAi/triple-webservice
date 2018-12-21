@@ -50,14 +50,7 @@ node {
       if [ ${DESIRED_COUNT} = "0" ]; then
         DESIRED_COUNT="1"
       fi
-      aws ecs update-service --cluster ${CLUSTER} \
-      --service-name ${SERVICE_NAME} \
-      --task-definition ${FAMILY}:${REVISION} \
-      --region ${REGION} --launch-type FARGATE \
-      --desired-count ${DESIRED_COUNT} \
-      --network-configuration "awsvpcConfiguration={subnets=["$PRIVATE_SUBNET1","$PRIVATE_SUBNET2"],securityGroups=["$SECURITY_GROUP"],assignPublicIp="DISABLED"}" \
-      --load-balancers "targetGroupArn="$TARGET_GROUP_ARN",containerName="$NAME",containerPort=8888" \
-      --deployment-configuration "maximumPercent=200,minimumHealthyPercent=0"
+      aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
     else
       echo "entered new service"
       aws ecs create-service --cluster ${CLUSTER} \
@@ -71,6 +64,6 @@ node {
 
     fi'''
 
-    sleep 60
+    sleep 30
     slackSend color: 'good', message: 'SUCCESS: Triple Webservice'
 }
