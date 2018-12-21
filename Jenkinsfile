@@ -22,7 +22,7 @@ node {
     REPOSITORY_NAME=triple-webservice
     CLUSTER=Test-Rainbird
     FAMILY=`sed -n \'s/.*"family": "\\(.*\\)",/\\1/p\' taskdef.json`
-    NAME=triple-webservice
+    NAME=triple
     SERVICE_NAME=${NAME}-service
     SECURITY_GROUP=sg-0e9987d8900c5c171
     PRIVATE_SUBNET1=subnet-57c3f92c
