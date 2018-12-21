@@ -50,7 +50,10 @@ node {
       if [ ${DESIRED_COUNT} = "0" ]; then
         DESIRED_COUNT="1"
       fi
-      aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
+      aws ecs update-service --cluster ${CLUSTER} \
+      --region ${REGION} --service ${SERVICE_NAME} \
+      --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT} \
+      --load-balancers "targetGroupArn="$TARGET_GROUP_ARN",containerName="$NAME",containerPort=8888" \
     else
       echo "entered new service"
       aws ecs create-service --cluster ${CLUSTER} \
