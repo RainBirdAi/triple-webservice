@@ -6,7 +6,7 @@
     "requiresCompatibilities": [
        "FARGATE"
     ],
-    "executionRoleArn": "arn:aws:iam::666909753182:role/PentestECSTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::051070528429:role/ECSTaskExecutionRole",
     "containerDefinitions": [
         {
             "image": "%REPOSITORY_URI%:%RELEASE_VERSION%.%BUILD_NUMBER%",
@@ -21,7 +21,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "Test-Triple-Webservice-Container-Fargate",
+                    "awslogs-group": "Enterprise-Triple-Webservice-Container-Fargate",
                     "awslogs-region": "eu-west-2",
                     "awslogs-stream-prefix": "ecs"
                 }
