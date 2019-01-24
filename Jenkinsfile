@@ -37,8 +37,8 @@ node ('enterprise') {
     PRIVATE_SUBNET2=subnet-a4a8a8e9
     TARGET_GROUP_ARN=arn:aws:elasticloadbalancing:eu-west-2:051070528429:targetgroup/EnterpriseTripleWebservice/b0c9e91ea5e1f1af
 
-    #Store the repositoryUri as a variable
-    REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${REGION} | jq .repositories[].repositoryUri | tr -d \'"\'`
+    #Store the repositoryUri as a variable    
+    REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --registry-id 666909753182 --region ${REGION} | jq .repositories[].repositoryUri | tr -d \'"\'`
 
     #Replace the build number and respository URI placeholders with the constants above
     sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" -e "s;%RELEASE_VERSION%;${RELEASE_VERSION};g" -e "s;%REPOSITORY_URI%;${REPOSITORY_URI};g" taskdef.json > ${NAME}-${RELEASE_VERSION}.${BUILD_NUMBER}.json
