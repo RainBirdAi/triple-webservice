@@ -14,13 +14,21 @@ node {
     docker.image('666909753182.dkr.ecr.eu-west-2.amazonaws.com/triple-webservice:$RELEASE_VERSION.$BUILD_NUMBER').push()
     docker.image('666909753182.dkr.ecr.eu-west-2.amazonaws.com/triple-webservice:$RELEASE_VERSION.$BUILD_NUMBER').push('latest')
 
-    stage 'Test Deploy'
+    stash name: 'everything'
+}
+
+node {
+    stage 'Enterprise Deploy'
+}
+
+node ('enterprise') {
+    unstash 'everything'
     sh '''#!/bin/bash
 
     #Constants
     REGION=eu-west-2
     REPOSITORY_NAME=triple-webservice
-    CLUSTER=Enterprise-Rainbird
+    CLUSTER=LDN-Enterprise-Rainbird
     FAMILY=`sed -n \'s/.*"family": "\\(.*\\)",/\\1/p\' taskdef.json`
     NAME=triple
     SERVICE_NAME=${NAME}-service
@@ -32,7 +40,7 @@ node {
     #Store the repositoryUri as a variable
     REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${REGION} | jq .repositories[].repositoryUri | tr -d \'"\'`
 
-    #Replace the build number and respository URI placeholders with the constants above    
+    #Replace the build number and respository URI placeholders with the constants above
     sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" -e "s;%RELEASE_VERSION%;${RELEASE_VERSION};g" -e "s;%REPOSITORY_URI%;${REPOSITORY_URI};g" taskdef.json > ${NAME}-${RELEASE_VERSION}.${BUILD_NUMBER}.json
 
     #Register the task definition in the repository
