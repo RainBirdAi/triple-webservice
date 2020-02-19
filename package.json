@@ -1,6 +1,6 @@
 {
   "name": "triple-webservice",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "main": "./lib.js",
   "homepage": "https://github.com/RainbirdAi/triple-webservice",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "author": "holdy",
   "engines": {
-    "node": "0.10.30"
+    "node": "12.x.x"
   },
   "dependencies": {
     "body-parser": "1.15.x",

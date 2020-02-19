@@ -47,6 +47,8 @@ function senddata(res, data) {
     res.send(JSON.stringify({'status': 'OK', 'data': data}, null, 3));
 }
 
+app.get('/status', (req, res) => res.send(200));
+
 app.get('/query/:key/:subject/:relationship', function(req, res) {
     processQuery(req.params.key, req.params.subject, req.params.relationship, req, res);
 });
