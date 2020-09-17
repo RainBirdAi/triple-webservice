@@ -176,7 +176,10 @@ app.post("/:key/query/:subject/:relationship", function (req, res) {
 
 app.get("/mock-response/:code", function (req, res) {
   const code = req.params.code;
-  const data = { query: req.query, body: {} };
+  const data = {
+    query: req.query,
+    body: { conditions: "sunny", temperature: 30 },
+  };
   const regex = /2[0-9][0-9]/g;
 
   if (regex.test(code)) {
