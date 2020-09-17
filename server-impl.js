@@ -176,16 +176,13 @@ app.post("/:key/query/:subject/:relationship", function (req, res) {
 
 app.get("/mock-response/:code", function (req, res) {
   const code = req.params.code;
-  const data = {
-    query: req.query,
-    body: { conditions: "sunny", temperature: 30 },
-  };
+  const data = { conditions: "sunny", temperature: 30 };
   const regex = /2[0-9][0-9]/g;
 
   if (regex.test(code)) {
     res.status(code);
     res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({ status: "OK", data: data }, null, 3));
+    res.send(JSON.stringify({ status: "OK", data }, null, 3));
   } else res.status(401).send({ status: "ERROR", message: "Unhandled Status Code" });
 });
 
