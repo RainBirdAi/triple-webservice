@@ -183,7 +183,7 @@ app.get("/mock-response/:code", function (req, res) {
     res.status(code);
     res.setHeader("Content-Type", "application/json");
     res.send(JSON.stringify({ status: "OK", data }, null, 3));
-  } else res.status(401).send({ status: "ERROR", message: "Unhandled Status Code" });
+  } else res.status(400).send({ status: "ERROR", message: "Unhandled Status Code" });
 });
 
 app.post("/rbproxy", require("./handlers/rbproxy").process);
